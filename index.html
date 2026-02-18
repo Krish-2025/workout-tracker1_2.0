@@ -692,7 +692,12 @@
             const completed = document.querySelectorAll('.exercise-item.completed').length;
             const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
             
-            const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+            // Get local date instead of UTC to avoid timezone issues
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const today = `${year}-${month}-${day}`; // Format: YYYY-MM-DD
             
             // Get existing history
             let history = JSON.parse(localStorage.getItem('workoutHistory') || '[]');
