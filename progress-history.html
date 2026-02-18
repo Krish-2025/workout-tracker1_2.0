@@ -271,6 +271,9 @@
             // Show last 10 entries, most recent first
             const recentHistory = history.slice(-10).reverse();
             
+            // Map day number to weekday name
+            const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            
             recentHistory.forEach(entry => {
                 const date = new Date(entry.date);
                 const dateStr = date.toLocaleDateString('en-US', { 
@@ -280,8 +283,6 @@
                     year: 'numeric'
                 });
                 
-                // Map day number to weekday name
-                const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
                 const dayName = dayNames[entry.day - 1] || 'Day ' + entry.day;
                 
                 html += `
