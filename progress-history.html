@@ -280,11 +280,15 @@
                     year: 'numeric'
                 });
                 
+                // Map day number to weekday name
+                const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                const dayName = dayNames[entry.day - 1] || 'Day ' + entry.day;
+                
                 html += `
                     <div class="history-item">
                         <div>
                             <div class="history-date">${dateStr}</div>
-                            <div style="color: #64b5f6; font-size: 0.9em;">Day ${entry.day}</div>
+                            <div style="color: #64b5f6; font-size: 0.9em;">${dayName}</div>
                         </div>
                         <div class="history-percentage">${entry.percentage}%</div>
                     </div>
